@@ -21,19 +21,20 @@ const idInput = document.getElementById("id");
 
 // Mapeamento dos membros por ID
 const membros = {
-  24001: "Nickolas Ferreira Maiolino",
-  24002: "João Victor Alberto Cancissú",
-  24003: "Silas Almeida Durans Lima",
-  24004: "Gabrielle Ribeiro Silva",
-  24005: "Lucas Matheus dos Passos Gomes",
-  24006: "Ana Luiza Oliveira Guimarães O'Farrell",
-  24007: "Felipe Portela Aguilar de Oliveira",
-  24008: "Luis Antonio Bastos Polari",
-  24009: "Saynara de Sousa da Silva",
-  24010: "Helton Jorge Silva Santos Junior",
-  24011: "José de Ribamar Pereira Soares Júnior",
-  24012: "José Emanuel Figueredo Lopes Lacerda",
-  24013: "Kauanny Brito Vieira",
+  24001: "Sarah Sophia da Silva Pinto",
+  24002: "Nickolas Ferreira Maiolino",
+  24003: "Maria Luiza Monteiro",
+  24004: "Luis Antonio Bastos Polari",
+  24005: "José Emanuel Figueredo Lopes Lacerda",
+  24010: "José de Ribamar Pereira Soares Júnior",
+  25010: "Helton Jorge Silva Santos Junior",
+  24011: "Gabrielle Ribeiro Silva",
+  25011: "Saynara de Sousa da Silva",
+  23010: "Ana Luiza Oliveira Guimarães O'Farrell",
+  25012: "Silas Almeida Durans Lima",
+  24012: "João Victor Alberto Cancissú",
+  25013: "Kauanny Brito Vieira",
+  23007: "Jose Victor Gaioso Barros",
 };
 
 // Totalizador visual de horas
