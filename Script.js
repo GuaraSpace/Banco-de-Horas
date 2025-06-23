@@ -47,6 +47,7 @@ const membros = {
   25119: "Nícolas André Silva Lacerda",
   25120: "Tamiris de Sá Martins",
   25121: "Thiago Santos Leis",
+  25122: "Wosthânia Tattiana Maria Ferreira Sousa",
 };
 
 // Totalizador visual de horas

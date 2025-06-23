@@ -212,13 +212,14 @@
     <script>
       // Configuração do Firebase
       const firebaseConfig = {
-          apiKey: "AIzaSyAM29vZ2OZ1r_ff0UItgPMNZWOLwk",
-          authDomain: "empresa-junior-guara-space.firebaseapp.com",
-          databaseURL: "https://empresa-junior-guara-space-default-rtdb.firebaseio.com",
-          projectId: "empresa-junior-guara-space",
-          storageBucket: "empresa-junior-guara-space.firebasestorage.app",
-          messagingSenderId: "747456424706",
-          appId: "1:747456424706:web:bcf36feb1ff61390c7701b"
+        apiKey: "AIzaSyAM29vZ2OZ1r_ff0UItgPMNZWOLwk",
+        authDomain: "empresa-junior-guara-space.firebaseapp.com",
+        databaseURL:
+          "https://empresa-junior-guara-space-default-rtdb.firebaseio.com",
+        projectId: "empresa-junior-guara-space",
+        storageBucket: "empresa-junior-guara-space.firebasestorage.app",
+        messagingSenderId: "747456424706",
+        appId: "1:747456424706:web:bcf36feb1ff61390c7701b",
       };
 
       // Inicializar Firebase
@@ -227,174 +228,184 @@
 
       // Mapeamento de IDs para nomes
       const membros = {
-          "24001": "Sarah Sophia da Silva Pinto",
-          "24002": "Nickolas Ferreira Maiolino",
-          "24003": "Maria Luiza Monteiro",
-          "24004": "Luis Antonio Bastos Polari",
-          "24005": "José Emanuel Figueredo Lopes Lacerda",
-          "24010": "José de Ribamar Pereira Soares Júnior",
-          "25010": "Helton Jorge Silva Santos Junior",
-          "24011": "Gabrielle Ribeiro Silva",
-          "25011": "Saynara de Sousa da Silva",
-          "23010": "Ana Luiza Oliveira Guimarães O'Farrell",
-          "25012": "Silas Almeida Durans Lima",
-          "24012": "João Victor Alberto Cancissú",
-          "25013": "Kauanny Brito Vieira",
-          "23007": "Jose Victor Gaioso Barros",
-          "25110": "Victória Maria Santos Carvalho de Almeida",
-          "25111": "Karolinne Evelin Rodrigues Santos",
-          "25112": "Luiza Gabrielly do Rosário Chaves",
-          "25113": "Maria Luiza Duarte",
-          "25114": "William Darlley Silva dos Santos",
-          "25115": "Arthur Roosevelth Soares Carvalho",
-          "25116": "Jose Carlos Ramos Neto",
-          "25117": "Júlia Cristine Pereira Ribeiro",
-          "25118": "Marco Antônio Silva Firmo",
-          "25119": "Nícolas André Silva Lacerda",
-          "25120": "Tamiris de Sá Martins",
-          "25121": "Thiago Santos Leis",
-
-
+        24001: "Sarah Sophia da Silva Pinto",
+        24002: "Nickolas Ferreira Maiolino",
+        24003: "Maria Luiza Monteiro",
+        24004: "Luis Antonio Bastos Polari",
+        24005: "José Emanuel Figueredo Lopes Lacerda",
+        24010: "José de Ribamar Pereira Soares Júnior",
+        25010: "Helton Jorge Silva Santos Junior",
+        24011: "Gabrielle Ribeiro Silva",
+        25011: "Saynara de Sousa da Silva",
+        23010: "Ana Luiza Oliveira Guimarães O'Farrell",
+        25012: "Silas Almeida Durans Lima",
+        24012: "João Victor Alberto Cancissú",
+        25013: "Kauanny Brito Vieira",
+        23007: "Jose Victor Gaioso Barros",
+        25110: "Victória Maria Santos Carvalho de Almeida",
+        25111: "Karolinne Evelin Rodrigues Santos",
+        25112: "Luiza Gabrielly do Rosário Chaves",
+        25113: "Maria Luiza Duarte",
+        25114: "William Darlley Silva dos Santos",
+        25115: "Arthur Roosevelth Soares Carvalho",
+        25116: "Jose Carlos Ramos Neto",
+        25117: "Júlia Cristine Pereira Ribeiro",
+        25118: "Marco Antônio Silva Firmo",
+        25119: "Nícolas André Silva Lacerda",
+        25120: "Tamiris de Sá Martins",
+        25121: "Thiago Santos Leis",
+        25122: "Wosthânia Tattiana Maria Ferreira Sousa",
       };
 
       // Aguardar carregamento do Firebase
       document.addEventListener("DOMContentLoaded", () => {
-          // Verificar se Firebase carregou
-          if (typeof firebase === 'undefined') {
-              document.getElementById('loading').textContent = 'Erro: Firebase não carregou. Verifique sua conexão.';
-              return;
+        // Verificar se Firebase carregou
+        if (typeof firebase === "undefined") {
+          document.getElementById("loading").textContent =
+            "Erro: Firebase não carregou. Verifique sua conexão.";
+          return;
+        }
+
+        // Ocultar loading e mostrar formulário
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("formulario-horas").style.display = "block";
+
+        const form = document.getElementById("formulario-horas");
+        const feedback = document.getElementById("feedback");
+        const tipoAtividade = document.getElementById("tipo-atividade");
+        const valorPlantao = document.getElementById("valor-plantao");
+        const valorHoras = document.getElementById("valor-horas");
+
+        // Mostrar/ocultar campos baseado no tipo de atividade
+        tipoAtividade.addEventListener("change", () => {
+          const tipo = tipoAtividade.value;
+          const labels = document.querySelectorAll(".valor-container label");
+
+          if (tipo === "Plantao") {
+            labels[0].textContent = "Quantidade (Plantões):";
+            labels[1].textContent = "Ou em Horas:";
+            valorPlantao.placeholder = "Ex: 1, 0.5";
+            valorHoras.placeholder = "Ex: 2.5 (equivalente)";
+          } else {
+            labels[0].textContent = "Horas:";
+            labels[1].textContent = "Minutos (adicional):";
+            valorPlantao.placeholder = "Ex: 2";
+            valorHoras.placeholder = "Ex: 30 (0.5h)";
+          }
+        });
+
+        function mostrarFeedback(mensagem, tipo) {
+          feedback.textContent = mensagem;
+          feedback.className = `feedback ${tipo}`;
+          feedback.style.display = "block";
+
+          setTimeout(() => {
+            feedback.style.display = "none";
+          }, 5000);
+        }
+
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const responsavel = document.getElementById("responsavel").value;
+          const tipoAtiv = tipoAtividade.value;
+          const valorPlantaoVal = parseFloat(valorPlantao.value) || 0;
+          const valorHorasVal = parseFloat(valorHoras.value) || 0;
+          const idPessoa = document.getElementById("id-pessoa").value.trim();
+
+          // Validações
+          if (!responsavel || !tipoAtiv || !idPessoa) {
+            mostrarFeedback("Preencha todos os campos obrigatórios.", "error");
+            return;
           }
 
-          // Ocultar loading e mostrar formulário
-          document.getElementById('loading').style.display = 'none';
-          document.getElementById('formulario-horas').style.display = 'block';
-
-          const form = document.getElementById("formulario-horas");
-          const feedback = document.getElementById("feedback");
-          const tipoAtividade = document.getElementById("tipo-atividade");
-          const valorPlantao = document.getElementById("valor-plantao");
-          const valorHoras = document.getElementById("valor-horas");
-
-          // Mostrar/ocultar campos baseado no tipo de atividade
-          tipoAtividade.addEventListener("change", () => {
-              const tipo = tipoAtividade.value;
-              const labels = document.querySelectorAll(".valor-container label");
-
-              if (tipo === "Plantao") {
-                  labels[0].textContent = "Quantidade (Plantões):";
-                  labels[1].textContent = "Ou em Horas:";
-                  valorPlantao.placeholder = "Ex: 1, 0.5";
-                  valorHoras.placeholder = "Ex: 2.5 (equivalente)";
-              } else {
-                  labels[0].textContent = "Horas:";
-                  labels[1].textContent = "Minutos (adicional):";
-                  valorPlantao.placeholder = "Ex: 2";
-                  valorHoras.placeholder = "Ex: 30 (0.5h)";
-              }
-          });
-
-          function mostrarFeedback(mensagem, tipo) {
-              feedback.textContent = mensagem;
-              feedback.className = `feedback ${tipo}`;
-              feedback.style.display = "block";
-
-              setTimeout(() => {
-                  feedback.style.display = "none";
-              }, 5000);
+          if (!membros[idPessoa]) {
+            mostrarFeedback("ID da pessoa não encontrado.", "error");
+            return;
           }
 
-          form.addEventListener("submit", async (e) => {
-              e.preventDefault();
+          if (valorPlantaoVal === 0 && valorHorasVal === 0) {
+            mostrarFeedback("Insira pelo menos um valor.", "error");
+            return;
+          }
 
-              const responsavel = document.getElementById("responsavel").value;
-              const tipoAtiv = tipoAtividade.value;
-              const valorPlantaoVal = parseFloat(valorPlantao.value) || 0;
-              const valorHorasVal = parseFloat(valorHoras.value) || 0;
-              const idPessoa = document.getElementById("id-pessoa").value.trim();
+          try {
+            // Calcular horas totais
+            let horasTotal = 0;
+            let quantidadePlantoes = 0;
 
-              // Validações
-              if (!responsavel || !tipoAtiv || !idPessoa) {
-                  mostrarFeedback("Preencha todos os campos obrigatórios.", "error");
-                  return;
+            if (tipoAtiv === "Plantao") {
+              if (valorPlantaoVal > 0) {
+                quantidadePlantoes = valorPlantaoVal;
+                horasTotal = valorPlantaoVal * 2.5; // 1 plantão = 2.5 horas
+              } else if (valorHorasVal > 0) {
+                horasTotal = valorHorasVal;
+                quantidadePlantoes = valorHorasVal / 2.5;
               }
+            } else {
+              horasTotal = valorPlantaoVal + valorHorasVal / 60; // Minutos para horas
+            }
 
-              if (!membros[idPessoa]) {
-                  mostrarFeedback("ID da pessoa não encontrado.", "error");
-                  return;
-              }
+            // Buscar dados atuais da pessoa
+            const pessoaRef = db.ref(`horas/${idPessoa}`);
+            const snapshot = await pessoaRef.once("value");
+            const dadosAtuais = snapshot.exists()
+              ? snapshot.val()
+              : {
+                  nome: membros[idPessoa],
+                  id: idPessoa,
+                  plantoes: 0,
+                  trabalho: 0,
+                  complementar: 0,
+                  outros: 0,
+                  totalHoras: 0,
+                };
 
-              if (valorPlantaoVal === 0 && valorHorasVal === 0) {
-                  mostrarFeedback("Insira pelo menos um valor.", "error");
-                  return;
-              }
+            // Atualizar dados
+            const novosDados = { ...dadosAtuais };
+            novosDados.totalHoras = (novosDados.totalHoras || 0) + horasTotal;
 
-              try {
-                  // Calcular horas totais
-                  let horasTotal = 0;
-                  let quantidadePlantoes = 0;
+            if (tipoAtiv === "Plantao") {
+              novosDados.plantoes =
+                (novosDados.plantoes || 0) + quantidadePlantoes;
+            } else {
+              const campo = tipoAtiv.toLowerCase();
+              novosDados[campo] = (novosDados[campo] || 0) + horasTotal;
+            }
 
-                  if (tipoAtiv === "Plantao") {
-                      if (valorPlantaoVal > 0) {
-                          quantidadePlantoes = valorPlantaoVal;
-                          horasTotal = valorPlantaoVal * 2.5; // 1 plantão = 2.5 horas
-                      } else if (valorHorasVal > 0) {
-                          horasTotal = valorHorasVal;
-                          quantidadePlantoes = valorHorasVal / 2.5;
-                      }
-                  } else {
-                      horasTotal = valorPlantaoVal + (valorHorasVal / 60); // Minutos para horas
-                  }
+            // Salvar dados atualizados
+            await pessoaRef.set(novosDados);
 
-                  // Buscar dados atuais da pessoa
-                  const pessoaRef = db.ref(`horas/${idPessoa}`);
-                  const snapshot = await pessoaRef.once('value');
-                  const dadosAtuais = snapshot.exists() ? snapshot.val() : {
-                      nome: membros[idPessoa],
-                      id: idPessoa,
-                      plantoes: 0,
-                      trabalho: 0,
-                      complementar: 0,
-                      outros: 0,
-                      totalHoras: 0
-                  };
+            // Registrar histórico
+            const historicoRef = db.ref("historico").push();
 
-                  // Atualizar dados
-                  const novosDados = { ...dadosAtuais };
-                  novosDados.totalHoras = (novosDados.totalHoras || 0) + horasTotal;
+            await historicoRef.set({
+              responsavel: responsavel,
+              responsavelNome: membros[responsavel],
+              pessoa: idPessoa,
+              pessoaNome: membros[idPessoa],
+              tipo: tipoAtiv,
+              horasAdicionadas: horasTotal,
+              quantidadePlantoes: quantidadePlantoes || 0,
+              timestamp: firebase.database.ServerValue.TIMESTAMP,
+              data: new Date().toLocaleString("pt-BR"),
+            });
 
-                  if (tipoAtiv === "Plantao") {
-                      novosDados.plantoes = (novosDados.plantoes || 0) + quantidadePlantoes;
-                  } else {
-                      const campo = tipoAtiv.toLowerCase();
-                      novosDados[campo] = (novosDados[campo] || 0) + horasTotal;
-                  }
-
-                  // Salvar dados atualizados
-                  await pessoaRef.set(novosDados);
-
-                  // Registrar histórico
-                  const historicoRef = db.ref("historico").push();
-
-                  await historicoRef.set({
-                      responsavel: responsavel,
-                      responsavelNome: membros[responsavel],
-                      pessoa: idPessoa,
-                      pessoaNome: membros[idPessoa],
-                      tipo: tipoAtiv,
-                      horasAdicionadas: horasTotal,
-                      quantidadePlantoes: quantidadePlantoes || 0,
-                      timestamp: firebase.database.ServerValue.TIMESTAMP,
-                      data: new Date().toLocaleString('pt-BR')
-                  });
-
-                  mostrarFeedback(`Horas registradas com sucesso! ${horasTotal.toFixed(2)}h adicionadas para ${membros[idPessoa]}.`, "success");
-                  form.reset();
-
-              } catch (error) {
-                  console.error("Erro ao salvar:", error);
-                  mostrarFeedback("Erro ao salvar os dados. Tente novamente.", "error");
-              }
-          });
+            mostrarFeedback(
+              `Horas registradas com sucesso! ${horasTotal.toFixed(
+                2
+              )}h adicionadas para ${membros[idPessoa]}.`,
+              "success"
+            );
+            form.reset();
+          } catch (error) {
+            console.error("Erro ao salvar:", error);
+            mostrarFeedback(
+              "Erro ao salvar os dados. Tente novamente.",
+              "error"
+            );
+          }
+        });
       });
     </script>
   </body>
