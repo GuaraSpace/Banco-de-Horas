@@ -1,185 +1,208 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sistema de Horas - Guará Space</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 700px;
-            margin: 30px auto;
-            padding: 20px;
-            background-color: #f0f0f0;
-            border-radius: 8px;
-        }
-        
-        h1 {
-            text-align: center;
-            color: #b91c1c;
-            margin-bottom: 30px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #333;
-        }
-        
-        select, input[type="text"], input[type="number"] {
-            width: 100%;
-            padding: 10px;
-            border: 2px solid #ddd;
-            border-radius: 4px;
-            font-size: 16px;
-            box-sizing: border-box;
-        }
-        
-        select:focus, input:focus {
-            border-color: #b91c1c;
-            outline: none;
-        }
-        
-        .valor-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-        
-        .valor-container .form-group {
-            margin-bottom: 0;
-        }
-        
-        button {
-            width: 100%;
-            padding: 12px;
-            background-color: #b91c1c;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        button:hover {
-            background-color: #991b1b;
-        }
-        
-        .feedback {
-            margin-top: 20px;
-            padding: 10px;
-            border-radius: 4px;
-            text-align: center;
-            font-weight: bold;
-            display: none;
-        }
-        
-        .success {
-            background-color: #d1f2eb;
-            color: #0e7e6e;
-            border: 1px solid #0e7e6e;
-        }
-        
-        .error {
-            background-color: #fadbd8;
-            color: #a93226;
-            border: 1px solid #a93226;
-        }
-        
-        .info-box {
-            background-color: #fff3cd;
-            border: 1px solid #ffeaa7;
-            border-radius: 4px;
-            padding: 15px;
-            margin-bottom: 20px;
-        }
-        
-        .info-box h3 {
-            margin-top: 0;
-            color: #856404;
-        }
-        
-        .info-box ul {
-            margin: 0;
-            padding-left: 20px;
-        }
-        
-        .info-box li {
-            color: #6c5700;
-            margin-bottom: 5px;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 700px;
+        margin: 30px auto;
+        padding: 20px;
+        background-color: #f0f0f0;
+        border-radius: 8px;
+      }
 
-        .loading {
-            text-align: center;
-            color: #666;
-            font-style: italic;
-        }
+      h1 {
+        text-align: center;
+        color: #b91c1c;
+        margin-bottom: 30px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #333;
+      }
+
+      select,
+      input[type="text"],
+      input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+        box-sizing: border-box;
+      }
+
+      select:focus,
+      input:focus {
+        border-color: #b91c1c;
+        outline: none;
+      }
+
+      .valor-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }
+
+      .valor-container .form-group {
+        margin-bottom: 0;
+      }
+
+      button {
+        width: 100%;
+        padding: 12px;
+        background-color: #b91c1c;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: #991b1b;
+      }
+
+      .feedback {
+        margin-top: 20px;
+        padding: 10px;
+        border-radius: 4px;
+        text-align: center;
+        font-weight: bold;
+        display: none;
+      }
+
+      .success {
+        background-color: #d1f2eb;
+        color: #0e7e6e;
+        border: 1px solid #0e7e6e;
+      }
+
+      .error {
+        background-color: #fadbd8;
+        color: #a93226;
+        border: 1px solid #a93226;
+      }
+
+      .info-box {
+        background-color: #fff3cd;
+        border: 1px solid #ffeaa7;
+        border-radius: 4px;
+        padding: 15px;
+        margin-bottom: 20px;
+      }
+
+      .info-box h3 {
+        margin-top: 0;
+        color: #856404;
+      }
+
+      .info-box ul {
+        margin: 0;
+        padding-left: 20px;
+      }
+
+      .info-box li {
+        color: #6c5700;
+        margin-bottom: 5px;
+      }
+
+      .loading {
+        text-align: center;
+        color: #666;
+        font-style: italic;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Sistema de Contabilização de Horas</h1>
-    
+
     <div class="info-box">
-        <h3>Valores de Referência:</h3>
-        <ul>
-            <li><strong>Plantão:</strong> 1 = 2h30min | 0.5 = 1h15min</li>
-            <li><strong>Trabalho/Complementar/Outros:</strong> 1 = 1 hora</li>
-        </ul>
+      <h3>Valores de Referência:</h3>
+      <ul>
+        <li><strong>Plantão:</strong> 1 = 2h30min | 0.5 = 1h15min</li>
+        <li><strong>Trabalho/Complementar/Outros:</strong> 1 = 1 hora</li>
+      </ul>
     </div>
-    
+
     <div id="loading" class="loading">Carregando Firebase...</div>
-    
-    <form id="formulario-horas" style="display: none;">
+
+    <form id="formulario-horas" style="display: none">
+      <div class="form-group">
+        <label for="responsavel">Quem está inserindo:</label>
+        <select id="responsavel" required>
+          <option value="">-- Selecione --</option>
+          <option value="24001">Sarah Sophia da Silva Pinto (24001)</option>
+          <option value="24002">Nickolas Ferreira Maiolino (24002)</option>
+          <option value="24003">Maria Luiza Monteiro (24003)</option>
+          <option value="24004">Luis Antonio Bastos Polari (24004)</option>
+          <option value="24005">
+            José Emanuel Figueredo Lopes Lacerda (24005)
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="tipo-atividade">Tipo de Atividade:</label>
+        <select id="tipo-atividade" required>
+          <option value="">-- Selecione --</option>
+          <option value="Plantao">Plantão</option>
+          <option value="Trabalho">Trabalho</option>
+          <option value="Complementar">Complementar</option>
+          <option value="Outros">Outros</option>
+        </select>
+      </div>
+
+      <div class="valor-container">
         <div class="form-group">
-            <label for="responsavel">Quem está inserindo:</label>
-            <select id="responsavel" required>
-                <option value="">-- Selecione --</option>
-                <option value="24001">Sarah Sophia da Silva Pinto (24001)</option>
-                <option value="24002">Nickolas Ferreira Maiolino (24002)</option>
-                <option value="24003">Maria Luiza Monteiro (24003)</option>
-                <option value="24004">Luis Antonio Bastos Polari (24004)</option>
-                <option value="24005">José Emanuel Figueredo Lopes Lacerda (24005)</option>
-            </select>
+          <label for="valor-plantao">Quantidade (Plantões):</label>
+          <input
+            type="number"
+            id="valor-plantao"
+            step="0.5"
+            min="0"
+            placeholder="Ex: 1, 0.5"
+          />
         </div>
-        
+
         <div class="form-group">
-            <label for="tipo-atividade">Tipo de Atividade:</label>
-            <select id="tipo-atividade" required>
-                <option value="">-- Selecione --</option>
-                <option value="Plantao">Plantão</option>
-                <option value="Trabalho">Trabalho</option>
-                <option value="Complementar">Complementar</option>
-                <option value="Outros">Outros</option>
-            </select>
+          <label for="valor-horas">Quantidade (Horas):</label>
+          <input
+            type="number"
+            id="valor-horas"
+            step="0.25"
+            min="0"
+            placeholder="Ex: 2.5"
+          />
         </div>
-        
-        <div class="valor-container">
-            <div class="form-group">
-                <label for="valor-plantao">Quantidade (Plantões):</label>
-                <input type="number" id="valor-plantao" step="0.5" min="0" placeholder="Ex: 1, 0.5">
-            </div>
-            
-            <div class="form-group">
-                <label for="valor-horas">Quantidade (Horas):</label>
-                <input type="number" id="valor-horas" step="0.25" min="0" placeholder="Ex: 2.5">
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <label for="id-pessoa">ID da Pessoa:</label>
-            <input type="text" id="id-pessoa" required placeholder="Ex: 24001" pattern="[0-9]{5}">
-        </div>
-        
-        <button type="submit">Registrar Horas</button>
-        
-        <div id="feedback" class="feedback"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="id-pessoa">ID da Pessoa:</label>
+        <input
+          type="text"
+          id="id-pessoa"
+          required
+          placeholder="Ex: 24001"
+          pattern="[0-9]{5}"
+        />
+      </div>
+
+      <button type="submit">Registrar Horas</button>
+
+      <div id="feedback" class="feedback"></div>
     </form>
 
     <!-- Firebase SDK v9 - Compatibilidade com GitHub Pages -->
@@ -187,178 +210,192 @@
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
     <script>
-        // Configuração do Firebase
-        const firebaseConfig = {
-            apiKey: "AIzaSyAM29vZ2OZ1r_ff0UItgPMNZWOLwk",
-            authDomain: "empresa-junior-guara-space.firebaseapp.com",
-            databaseURL: "https://empresa-junior-guara-space-default-rtdb.firebaseio.com",
-            projectId: "empresa-junior-guara-space",            
-            storageBucket: "empresa-junior-guara-space.firebasestorage.app",
-            messagingSenderId: "747456424706",
-            appId: "1:747456424706:web:bcf36feb1ff61390c7701b"
-        };
+      // Configuração do Firebase
+      const firebaseConfig = {
+          apiKey: "AIzaSyAM29vZ2OZ1r_ff0UItgPMNZWOLwk",
+          authDomain: "empresa-junior-guara-space.firebaseapp.com",
+          databaseURL: "https://empresa-junior-guara-space-default-rtdb.firebaseio.com",
+          projectId: "empresa-junior-guara-space",
+          storageBucket: "empresa-junior-guara-space.firebasestorage.app",
+          messagingSenderId: "747456424706",
+          appId: "1:747456424706:web:bcf36feb1ff61390c7701b"
+      };
 
-        // Inicializar Firebase
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.database();
+      // Inicializar Firebase
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.database();
 
-        // Mapeamento de IDs para nomes
-        const membros = {
-            "24001": "Sarah Sophia da Silva Pinto",
-            "24002": "Nickolas Ferreira Maiolino",
-            "24003": "Maria Luiza Monteiro",
-            "24004": "Luis Antonio Bastos Polari",
-            "24005": "José Emanuel Figueredo Lopes Lacerda",
-            "24010": "José de Ribamar Pereira Soares Júnior",
-            "25010": "Helton Jorge Silva Santos Junior",
-            "24011": "Gabrielle Ribeiro Silva",
-            "25011": "Saynara de Sousa da Silva",
-            "23010": "Ana Luiza Oliveira Guimarães O'Farrell",
-            "25012": "Silas Almeida Durans Lima",
-            "24012": "João Victor Alberto Cancissú",
-            "25013": "Kauanny Brito Vieira",
-            "23007": "Jose Victor Gaioso Barros"
-        };
+      // Mapeamento de IDs para nomes
+      const membros = {
+          "24001": "Sarah Sophia da Silva Pinto",
+          "24002": "Nickolas Ferreira Maiolino",
+          "24003": "Maria Luiza Monteiro",
+          "24004": "Luis Antonio Bastos Polari",
+          "24005": "José Emanuel Figueredo Lopes Lacerda",
+          "24010": "José de Ribamar Pereira Soares Júnior",
+          "25010": "Helton Jorge Silva Santos Junior",
+          "24011": "Gabrielle Ribeiro Silva",
+          "25011": "Saynara de Sousa da Silva",
+          "23010": "Ana Luiza Oliveira Guimarães O'Farrell",
+          "25012": "Silas Almeida Durans Lima",
+          "24012": "João Victor Alberto Cancissú",
+          "25013": "Kauanny Brito Vieira",
+          "23007": "Jose Victor Gaioso Barros",
+          "25110": "Victória Maria Santos Carvalho de Almeida",
+          "25111": "Karolinne Evelin Rodrigues Santos",
+          "25112": "Luiza Gabrielly do Rosário Chaves",
+          "25113": "Maria Luiza Duarte",
+          "25114": "William Darlley Silva dos Santos",
+          "25115": "Arthur Roosevelth Soares Carvalho",
+          "25116": "Jose Carlos Ramos Neto",
+          "25117": "Júlia Cristine Pereira Ribeiro",
+          "25118": "Marco Antônio Silva Firmo",
+          "25119": "Nícolas André Silva Lacerda",
+          "25120": "Tamiris de Sá Martins",
+          "25121": "Thiago Santos Leis",
 
-        // Aguardar carregamento do Firebase
-        document.addEventListener("DOMContentLoaded", () => {
-            // Verificar se Firebase carregou
-            if (typeof firebase === 'undefined') {
-                document.getElementById('loading').textContent = 'Erro: Firebase não carregou. Verifique sua conexão.';
-                return;
-            }
 
-            // Ocultar loading e mostrar formulário
-            document.getElementById('loading').style.display = 'none';
-            document.getElementById('formulario-horas').style.display = 'block';
+      };
 
-            const form = document.getElementById("formulario-horas");
-            const feedback = document.getElementById("feedback");
-            const tipoAtividade = document.getElementById("tipo-atividade");
-            const valorPlantao = document.getElementById("valor-plantao");
-            const valorHoras = document.getElementById("valor-horas");
+      // Aguardar carregamento do Firebase
+      document.addEventListener("DOMContentLoaded", () => {
+          // Verificar se Firebase carregou
+          if (typeof firebase === 'undefined') {
+              document.getElementById('loading').textContent = 'Erro: Firebase não carregou. Verifique sua conexão.';
+              return;
+          }
 
-            // Mostrar/ocultar campos baseado no tipo de atividade
-            tipoAtividade.addEventListener("change", () => {
-                const tipo = tipoAtividade.value;
-                const labels = document.querySelectorAll(".valor-container label");
-                
-                if (tipo === "Plantao") {
-                    labels[0].textContent = "Quantidade (Plantões):";
-                    labels[1].textContent = "Ou em Horas:";
-                    valorPlantao.placeholder = "Ex: 1, 0.5";
-                    valorHoras.placeholder = "Ex: 2.5 (equivalente)";
-                } else {
-                    labels[0].textContent = "Horas:";
-                    labels[1].textContent = "Minutos (adicional):";
-                    valorPlantao.placeholder = "Ex: 2";
-                    valorHoras.placeholder = "Ex: 30 (0.5h)";
-                }
-            });
+          // Ocultar loading e mostrar formulário
+          document.getElementById('loading').style.display = 'none';
+          document.getElementById('formulario-horas').style.display = 'block';
 
-            function mostrarFeedback(mensagem, tipo) {
-                feedback.textContent = mensagem;
-                feedback.className = `feedback ${tipo}`;
-                feedback.style.display = "block";
-                
-                setTimeout(() => {
-                    feedback.style.display = "none";
-                }, 5000);
-            }
+          const form = document.getElementById("formulario-horas");
+          const feedback = document.getElementById("feedback");
+          const tipoAtividade = document.getElementById("tipo-atividade");
+          const valorPlantao = document.getElementById("valor-plantao");
+          const valorHoras = document.getElementById("valor-horas");
 
-            form.addEventListener("submit", async (e) => {
-                e.preventDefault();
-                
-                const responsavel = document.getElementById("responsavel").value;
-                const tipoAtiv = tipoAtividade.value;
-                const valorPlantaoVal = parseFloat(valorPlantao.value) || 0;
-                const valorHorasVal = parseFloat(valorHoras.value) || 0;
-                const idPessoa = document.getElementById("id-pessoa").value.trim();
+          // Mostrar/ocultar campos baseado no tipo de atividade
+          tipoAtividade.addEventListener("change", () => {
+              const tipo = tipoAtividade.value;
+              const labels = document.querySelectorAll(".valor-container label");
 
-                // Validações
-                if (!responsavel || !tipoAtiv || !idPessoa) {
-                    mostrarFeedback("Preencha todos os campos obrigatórios.", "error");
-                    return;
-                }
+              if (tipo === "Plantao") {
+                  labels[0].textContent = "Quantidade (Plantões):";
+                  labels[1].textContent = "Ou em Horas:";
+                  valorPlantao.placeholder = "Ex: 1, 0.5";
+                  valorHoras.placeholder = "Ex: 2.5 (equivalente)";
+              } else {
+                  labels[0].textContent = "Horas:";
+                  labels[1].textContent = "Minutos (adicional):";
+                  valorPlantao.placeholder = "Ex: 2";
+                  valorHoras.placeholder = "Ex: 30 (0.5h)";
+              }
+          });
 
-                if (!membros[idPessoa]) {
-                    mostrarFeedback("ID da pessoa não encontrado.", "error");
-                    return;
-                }
+          function mostrarFeedback(mensagem, tipo) {
+              feedback.textContent = mensagem;
+              feedback.className = `feedback ${tipo}`;
+              feedback.style.display = "block";
 
-                if (valorPlantaoVal === 0 && valorHorasVal === 0) {
-                    mostrarFeedback("Insira pelo menos um valor.", "error");
-                    return;
-                }
+              setTimeout(() => {
+                  feedback.style.display = "none";
+              }, 5000);
+          }
 
-                try {
-                    // Calcular horas totais
-                    let horasTotal = 0;
-                    let quantidadePlantoes = 0;
-                    
-                    if (tipoAtiv === "Plantao") {
-                        if (valorPlantaoVal > 0) {
-                            quantidadePlantoes = valorPlantaoVal;
-                            horasTotal = valorPlantaoVal * 2.5; // 1 plantão = 2.5 horas
-                        } else if (valorHorasVal > 0) {
-                            horasTotal = valorHorasVal;
-                            quantidadePlantoes = valorHorasVal / 2.5;
-                        }
-                    } else {
-                        horasTotal = valorPlantaoVal + (valorHorasVal / 60); // Minutos para horas
-                    }
+          form.addEventListener("submit", async (e) => {
+              e.preventDefault();
 
-                    // Buscar dados atuais da pessoa
-                    const pessoaRef = db.ref(`horas/${idPessoa}`);
-                    const snapshot = await pessoaRef.once('value');
-                    const dadosAtuais = snapshot.exists() ? snapshot.val() : {
-                        nome: membros[idPessoa],
-                        id: idPessoa,
-                        plantoes: 0,
-                        trabalho: 0,
-                        complementar: 0,
-                        outros: 0,
-                        totalHoras: 0
-                    };
+              const responsavel = document.getElementById("responsavel").value;
+              const tipoAtiv = tipoAtividade.value;
+              const valorPlantaoVal = parseFloat(valorPlantao.value) || 0;
+              const valorHorasVal = parseFloat(valorHoras.value) || 0;
+              const idPessoa = document.getElementById("id-pessoa").value.trim();
 
-                    // Atualizar dados
-                    const novosDados = { ...dadosAtuais };
-                    novosDados.totalHoras = (novosDados.totalHoras || 0) + horasTotal;
-                    
-                    if (tipoAtiv === "Plantao") {
-                        novosDados.plantoes = (novosDados.plantoes || 0) + quantidadePlantoes;
-                    } else {
-                        const campo = tipoAtiv.toLowerCase();
-                        novosDados[campo] = (novosDados[campo] || 0) + horasTotal;
-                    }
+              // Validações
+              if (!responsavel || !tipoAtiv || !idPessoa) {
+                  mostrarFeedback("Preencha todos os campos obrigatórios.", "error");
+                  return;
+              }
 
-                    // Salvar dados atualizados
-                    await pessoaRef.set(novosDados);
+              if (!membros[idPessoa]) {
+                  mostrarFeedback("ID da pessoa não encontrado.", "error");
+                  return;
+              }
 
-                    // Registrar histórico
-                    const historicoRef = db.ref("historico").push();
-                    
-                    await historicoRef.set({
-                        responsavel: responsavel,
-                        responsavelNome: membros[responsavel],
-                        pessoa: idPessoa,
-                        pessoaNome: membros[idPessoa],
-                        tipo: tipoAtiv,
-                        horasAdicionadas: horasTotal,
-                        quantidadePlantoes: quantidadePlantoes || 0,
-                        timestamp: firebase.database.ServerValue.TIMESTAMP,
-                        data: new Date().toLocaleString('pt-BR')
-                    });
+              if (valorPlantaoVal === 0 && valorHorasVal === 0) {
+                  mostrarFeedback("Insira pelo menos um valor.", "error");
+                  return;
+              }
 
-                    mostrarFeedback(`Horas registradas com sucesso! ${horasTotal.toFixed(2)}h adicionadas para ${membros[idPessoa]}.`, "success");
-                    form.reset();
-                    
-                } catch (error) {
-                    console.error("Erro ao salvar:", error);
-                    mostrarFeedback("Erro ao salvar os dados. Tente novamente.", "error");
-                }
-            });
-        });
+              try {
+                  // Calcular horas totais
+                  let horasTotal = 0;
+                  let quantidadePlantoes = 0;
+
+                  if (tipoAtiv === "Plantao") {
+                      if (valorPlantaoVal > 0) {
+                          quantidadePlantoes = valorPlantaoVal;
+                          horasTotal = valorPlantaoVal * 2.5; // 1 plantão = 2.5 horas
+                      } else if (valorHorasVal > 0) {
+                          horasTotal = valorHorasVal;
+                          quantidadePlantoes = valorHorasVal / 2.5;
+                      }
+                  } else {
+                      horasTotal = valorPlantaoVal + (valorHorasVal / 60); // Minutos para horas
+                  }
+
+                  // Buscar dados atuais da pessoa
+                  const pessoaRef = db.ref(`horas/${idPessoa}`);
+                  const snapshot = await pessoaRef.once('value');
+                  const dadosAtuais = snapshot.exists() ? snapshot.val() : {
+                      nome: membros[idPessoa],
+                      id: idPessoa,
+                      plantoes: 0,
+                      trabalho: 0,
+                      complementar: 0,
+                      outros: 0,
+                      totalHoras: 0
+                  };
+
+                  // Atualizar dados
+                  const novosDados = { ...dadosAtuais };
+                  novosDados.totalHoras = (novosDados.totalHoras || 0) + horasTotal;
+
+                  if (tipoAtiv === "Plantao") {
+                      novosDados.plantoes = (novosDados.plantoes || 0) + quantidadePlantoes;
+                  } else {
+                      const campo = tipoAtiv.toLowerCase();
+                      novosDados[campo] = (novosDados[campo] || 0) + horasTotal;
+                  }
+
+                  // Salvar dados atualizados
+                  await pessoaRef.set(novosDados);
+
+                  // Registrar histórico
+                  const historicoRef = db.ref("historico").push();
+
+                  await historicoRef.set({
+                      responsavel: responsavel,
+                      responsavelNome: membros[responsavel],
+                      pessoa: idPessoa,
+                      pessoaNome: membros[idPessoa],
+                      tipo: tipoAtiv,
+                      horasAdicionadas: horasTotal,
+                      quantidadePlantoes: quantidadePlantoes || 0,
+                      timestamp: firebase.database.ServerValue.TIMESTAMP,
+                      data: new Date().toLocaleString('pt-BR')
+                  });
+
+                  mostrarFeedback(`Horas registradas com sucesso! ${horasTotal.toFixed(2)}h adicionadas para ${membros[idPessoa]}.`, "success");
+                  form.reset();
+
+              } catch (error) {
+                  console.error("Erro ao salvar:", error);
+                  mostrarFeedback("Erro ao salvar os dados. Tente novamente.", "error");
+              }
+          });
+      });
     </script>
-</body>
+  </body>
 </html>

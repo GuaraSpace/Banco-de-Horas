@@ -35,6 +35,18 @@ const membros = {
   24012: "João Victor Alberto Cancissú",
   25013: "Kauanny Brito Vieira",
   23007: "Jose Victor Gaioso Barros",
+  25110: "Victória Maria Santos Carvalho de Almeida",
+  25111: "Karolinne Evelin Rodrigues Santos",
+  25112: "Luiza Gabrielly do Rosário Chaves",
+  25113: "Maria Luiza Duarte",
+  25114: "William Darlley Silva dos Santos",
+  25115: "Arthur Roosevelth Soares Carvalho",
+  25116: "Jose Carlos Ramos Neto",
+  25117: "Júlia Cristine Pereira Ribeiro",
+  25118: "Marco Antônio Silva Firmo",
+  25119: "Nícolas André Silva Lacerda",
+  25120: "Tamiris de Sá Martins",
+  25121: "Thiago Santos Leis",
 };
 
 // Totalizador visual de horas
