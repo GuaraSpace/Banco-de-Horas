@@ -33,6 +33,7 @@ const membros = {
   23010: "Ana Luiza Oliveira Guimarães O'Farrell",
   25012: "Silas Almeida Durans Lima",
   24012: "João Victor Alberto Cancissú",
+  24013: "Felipe Portela Aguilar",
   25013: "Kauanny Brito Vieira",
   23007: "Jose Victor Gaioso Barros",
   25110: "Victória Maria Santos Carvalho de Almeida",
